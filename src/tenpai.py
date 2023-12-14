@@ -1,8 +1,9 @@
 from mahjong.shanten import Shanten
 from mahjong.tile import TilesConverter
+from mahjong.agari import Agari
 
 
-def tenpai(tiles, sute, kan):
+def tenpai_o(tiles, sute, kan):
     shanten = Shanten()
     if len(tiles) == 34:
         # [3,1,1,...,3,0,...,0]
@@ -24,6 +25,25 @@ def tenpai(tiles, sute, kan):
                 tiles_34[index] += 1
     return result
 
+
+def tenpai(result, tiles, sute):
+    agari = Agari()
+    if len(tiles) == 34:
+        # [3,1,1,...,3,0,...,0]
+        tiles_34 = tiles
+    else:
+        # man='1112345678999', pin='', sou='', honors=''
+        tiles_34 = TilesConverter.string_to_34_array(tiles)
+
+    for i in range(34):
+        result[i] = 0
+        if tiles_34[i] < 4 and not sute[i]:
+            tiles_34[i] += 1
+
+            if agari.is_agari(tiles_34):
+                result[i] = 1
+
+            tiles_34[i] -= 1
 
 if __name__ == "__main__":
     """

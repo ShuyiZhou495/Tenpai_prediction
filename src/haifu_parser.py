@@ -48,61 +48,92 @@ def parse_haifu(haifu):
             dora_list.append(dora[i])
             i += 1
 
-    richi_position = haifu[5].find("R")
-    first_richi_player = int(haifu[5][richi_position - 1])
-    haifu[5] = haifu[5][0:richi_position + 6]
+    # richi_position = haifu[5].find("R")
+    # first_richi_player = int(haifu[5][richi_position - 1])
+    # haifu[5] = haifu[5][0:richi_position + 6]
 
-    # search for kan
-    kan_index = -1
-    kan_list = {1:[], 2:[], 3:[], 4:[]}
-    while "K" in haifu[5][kan_index + 1:]:
-        kan_index += 1 + haifu[5][kan_index + 1:].index("K")
-        kan_player = haifu[5][kan_index-1]
-        kan_hai = haifu[5][kan_index + 1: kan_index + 3].replace(" ", "")
-        kan_list[int(kan_player)].append(change_tile_to_number(kan_hai))
+    # # search for kan
+    # kan_index = -1
+    # kan_list = {1:[], 2:[], 3:[], 4:[]}
+    # while "K" in haifu[5][kan_index + 1:]:
+    #     kan_index += 1 + haifu[5][kan_index + 1:].index("K")
+    #     kan_player = int(haifu[5][kan_index-1]) - 1
+    #     kan_hai = haifu[5][kan_index + 1: kan_index + 3].replace(" ", "")
+    #     kan_list[int(kan_player)].append(change_tile_to_number(kan_hai))
 
     # chanfon = '東'
     chanfon = haifu[6].strip()[0]
 
-    jikaze = haifu[first_richi_player - 1][2]
+    jikaze = [haifu[i][2] for i in range(4)]
 
-    # Generate input
-    player_list = [1, 2, 3, 4]
-    input_list = []
-    for player in player_list:
-        if player != first_richi_player and len(haifu[player - 1]) > 4 :
-            start_hand = haifu[player - 1][4:]
-            start_hand_string = ""
-            i = 0
-            prefix = str(player) + "G"
-            while i < len(start_hand):
-                if '1' <= start_hand[i] <= '9':
-                    now_tile = start_hand[i:i + 2]
-                    start_hand_string += prefix + now_tile + " "
-                    i += 2
-                else:
-                    now_tile = start_hand[i]
-                    start_hand_string += prefix + now_tile + " "
-                    i += 1
-            input_list.append(start_hand_string + haifu[5])
+    ############## Generate input
+    # write the start hand as actions
+    inputs = [] * 4
+    kan = 0
+    for player in range(4):
+        inp = []
+        start_hand = haifu[player][4:]
+        i = 0
+        prefix = str(player+1) + "G"
+        while i < len(start_hand):
+            if '1' <= start_hand[i] <= '9':
+                now_tile = start_hand[i:i + 2]
+                i += 2
+            else:
+                now_tile = start_hand[i]
+                i += 1
+            inp.append(
+                action_to_vector(prefix + now_tile, player + 1, chanfon, jikaze[player], dora_list[:kan+1])
+                )
+        inputs.append(inp)
 
-    # Generate output
-    start_hand_richi = parse_start_hand(haifu[first_richi_player - 1][4:])
-    sute = [False] * 34
-    for action in haifu[5].split(" "):
-        if action != "":
-            if action[0] == str(first_richi_player):
-                if action[1] == "G":
-                    now_tile = action[2:]
-                    start_hand_richi[change_tile_to_number(now_tile)] += 1
-                if action[1] == "D" or action[1] == "d":
-                    now_tile = action[2:]
-                    tile_number = change_tile_to_number(now_tile)
-                    start_hand_richi[tile_number] -= 1
-                    sute[tile_number] = True
-    tenpai_result = tenpai(start_hand_richi, sute, kan=kan_list[first_richi_player])
+    ############  Generate input of actions and corresponding output
+    actions = [a for a in haifu[5].split(" ") if a != ""]
+    if actions[-1][-1] == "A":
+        actions = actions[:-2]
+    start_hand = [parse_start_hand(haifu[i][4:]) for i in range(4)]
+    sute = [[False] * 34 for _ in range(4)]
+    houju = np.array([[0] * 34 for _ in range(4)], dtype=np.uint8)
+    outputs = [[], [], [], []]
+    last_sute = None
+    K = False
+    for action in actions:
+        ##### change hand #######
+        player = int(action[0]) - 1
+        if action[1] == "G":
+            now_tile = action[2:]
+            start_hand[player][change_tile_to_number(now_tile)] += 1
+        elif action[1] == "N" or action[1] == "C":
+            start_hand[player][last_sute] += 1
+        elif action[1] == "D" or action[1] == "d":
+            now_tile = action[2:]
+            tile_number = change_tile_to_number(now_tile)
+            last_sute = tile_number
+            start_hand[player][tile_number] -= 1
+            sute[player][tile_number] = True
 
-    return input_list, chanfon, jikaze, dora_list, tenpai_result, sute
+        if action[1] == "K":
+            K = True
+
+        ##### update houjuu hai ######
+        if action[1] == "D" or action[1] == "d":
+            tenpai(houju[player], start_hand[player], sute[player])
+
+        ###### update input ############
+        a2v = action_to_vector(action, player + 1, chanfon, jikaze[player], dora_list[:kan+1])
+        curr_houju = houju.sum(0, dtype=np.uint8)
+        if action[1] == "G":
+            inputs[player].append(a2v)
+            outputs[player].append((curr_houju - houju[player]).astype(bool))
+        else:
+            for i in range(4):
+                inputs[i].append(a2v)
+                outputs[i].append((curr_houju - houju[i]).astype(bool))
+        if K and (action[1] == "D" or action[1] == "d"):
+            kan += 1
+            K = False
+
+    return inputs, outputs
 
 
 def show_sutehai(haifu, player):
@@ -141,17 +172,17 @@ def action_to_vector(action, player, chanfon, jikaze, dora_list):
     ch = action[1]
     if ch == 'G':
         act = 0
-    if ch == 'd':
+    elif ch == 'd':
         act = 1
-    if ch == 'D':
+    elif ch == 'D':
         act = 2
-    if ch == 'N':
+    elif ch == 'N':
         act = 3
-    if ch == 'C':
+    elif ch == 'C':
         act = 4
-    if ch == 'K':
+    elif ch == 'K':
         act = 5
-    if ch == 'R':
+    elif ch == 'R':
         act = 6
     vector[act + 4] = 1  # act 4-10
 
@@ -181,7 +212,7 @@ def action_to_vector(action, player, chanfon, jikaze, dora_list):
                 if tile[2:] == dora and dora_counter <= 4:
                     vector[47 + dora_counter] = 1  # uradora 48-51
 
-    return np.array(vector)
+    return np.array(vector, dtype=bool)
 
 
 def check_haifu(st):
@@ -205,18 +236,23 @@ def load_data(file_name):
                 use_line += 1
             else:
                 haifu_now = lines[use_line: use_line + 5]
-                chanfon_richi_honba = lines[use_line - 2]
-                use_line = use_line + 5
-                sute = ""
-                star = lines[use_line].find("*")
-                while star != -1:
-                    sute += lines[use_line][star + 1:]
-                    use_line += 1
+                if haifu_now[3][:2] == "[4":
+                    chanfon_richi_honba = lines[use_line - 2]
+                    use_line = use_line + 5
+                    sute = ""
                     star = lines[use_line].find("*")
-                haifu_now.append(sute.strip())
-                haifu_now.append(chanfon_richi_honba)
-                # Get Chanfon, richi, honba
-                haifu_list.append(haifu_now)
+                    while star != -1:
+                        sute += lines[use_line][star + 1:]
+                        use_line += 1
+                        star = lines[use_line].find("*")
+                    haifu_now.append(sute.strip())
+                    haifu_now.append(chanfon_richi_honba)
+                    # Get Chanfon, richi, honba
+                    haifu_list.append(haifu_now)
+                else:
+                    use_line += 4
+                    while lines[use_line].find("*") != -1:
+                        use_line += 1
 
     return haifu_list
 
