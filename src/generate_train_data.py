@@ -16,13 +16,13 @@ def generate_train_data(file_name):
     x_data = []
     y_data = []
 
-    file_path = "../data/" + file_name + ".txt"
-    # test_list = load_data("../data/sample.txt")
-    # test_list = load_data("../data/totuhaihu.txt")
+    file_path = "./data/" + file_name + ".txt"
+    # test_list = load_data("./data/sample.txt")
+    # test_list = load_data("./data/totuhaihu.txt")
     test_list = load_data(file_path)
-
+    print("original haifu", len(test_list))
     richi_data = richi_filter(test_list)
-
+    print("orginal richi", len(richi_data))
     print("Generate fake haifu:")
     fake_haifu_number = 7 # Too big will cause Out of Memory
     # fake_haifu_number = 0
@@ -30,8 +30,8 @@ def generate_train_data(file_name):
     for haifu in richi_data:
         new_richi_data.append(haifu)
         new_richi_data += generate_fake_haifu(haifu, fake_haifu_number)
-        if len(new_richi_data) % 1000 == 0:
-            print(len(new_richi_data), round(time.time() - time_start, 2))
+        # if len(new_richi_data) % 1000 == 0:
+        #     print(len(new_richi_data), round(time.time() - time_start, 2))
     print(len(new_richi_data), round(time.time() - time_start, 2))    
 
     print("Embed to vectors:")
@@ -46,9 +46,9 @@ def generate_train_data(file_name):
                         x.append(action_to_vector(action, player, chanfon, jikaze, dora_list))
             x_data.append(np.array(x))
             y_data.append(tenpai_result)
-            if len(y_data) % 2000 == 0:
-                print(len(y_data), round(time.time() - time_start, 2))
-    x_data_numpy = np.array(x_data)
+            # if len(y_data) % 2000 == 0:
+            #     print(len(y_data), round(time.time() - time_start, 2))
+    x_data_numpy = np.array(x_data, dtype=object)
     y_data_numpy = np.array(y_data)
 
     time_end = time.time()
@@ -77,10 +77,10 @@ def generate_test_data(file_name):
                 if action != "":
                     if not(player != action[0] and action[1] == "G"):
                         x.append(action_to_vector(action, player, chanfon, jikaze, dora_list))
-            x_data.append(np.array(x))
+            x_data.append(np.array(x, dtype=np.int8))
             y_data.append(tenpai_result)
             assistant_data.append([player, sute])
-    x_data_numpy = np.array(x_data)
+    x_data_numpy = np.array(x_data, dtype=object)
     y_data_numpy = np.array(y_data)
 
     return x_data_numpy, y_data_numpy, assistant_data
@@ -91,10 +91,10 @@ def pad_x(x_data):
     for i in range(len(x_data)):
         x_len.append(x_data[i].shape[0])
     max_x_len = max(x_len)
-    x_data_ret = np.zeros((len(x_data), max_x_len, 52))
+    x_data_ret = np.zeros((len(x_data), max_x_len, 52), dtype=np.int8)
 
     for i in range(len(x_data)):
-        zeros = np.zeros((max_x_len - x_data[i].shape[0], 52))
+        zeros = np.zeros((max_x_len - x_data[i].shape[0], 52), dtype=np.int8)
         x_data_ret[i] = np.concatenate((zeros, x_data[i]), axis=0)
     return x_data_ret
 
@@ -125,7 +125,7 @@ def generate_train_test():
     return x_train, x_test, y_train, y_test
 
 
-local_place = "/media/sda3/veritas/GanjinZero/haifu/"
+local_place = "/home/sue/Projects/Tenpai_prediction/data/"
 def save_train_data():
     x_data_0, y_data_0 = generate_train_data("totuhaihu")
     x_data_1, y_data_1 = generate_train_data("kintaro")
@@ -149,8 +149,8 @@ def save_train_data():
 
 
 def generate_train_test_local():
-    x_data = np.load(local_place + "x_data.npy")
-    y_data = np.load(local_place + "y_data.npy")
+    x_data = np.load(local_place + "x_data.npy").astype(np.int8)
+    y_data = np.load(local_place + "y_data.npy").astype(np.int8)
     x_train, x_test, y_train, y_test = shuffle_split(x_data, y_data)
     return x_train, x_test, y_train, y_test
 
