@@ -133,7 +133,7 @@ def parse_haifu(haifu):
             kan += 1
             K = False
 
-    return inputs, outputs
+    return [np.array(inp, dtype=bool) for inp in inputs], [np.array(out, dtype=bool) for out in outputs]
 
 
 def show_sutehai(haifu, player):

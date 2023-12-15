@@ -1,5 +1,6 @@
 import numpy as np
 import time
+import os
 from sklearn.utils import shuffle
 from sklearn.model_selection import train_test_split
 from generate_fake_haifu import generate_fake_haifu
@@ -12,6 +13,12 @@ from haifu_parser import action_to_vector
 def generate_train_data(file_name):
     # 600 haifus/1s
     print("Haifu name:" + file_name)
+
+    if os.path.exists("./data/" + file_name + ".npy"):
+        with open("./data/" + file_name + ".npy", "rb") as f:
+            x_data_numpy = np.load(f, allow_pickle=True)
+            y_data_numpy = np.load(f, allow_pickle=True)
+        return x_data_numpy, y_data_numpy
     time_start = time.time()
     x_data = []
     y_data = []
@@ -36,8 +43,12 @@ def generate_train_data(file_name):
     print("Embed to vectors...")
     for haifu in data:
         inputs, outputs = parse_haifu(haifu)
-        x_data += inputs
-        y_data += outputs
+        for inp, out in zip(inputs, outputs):
+            if len(out) > 0:
+                x_data.append(inp)
+                y_data.append(out)
+            else:
+                continue
     x_data_numpy = np.array(x_data, dtype=object)
     y_data_numpy = np.array(y_data, dtype=object)
 
@@ -81,12 +92,12 @@ def generate_test_data(file_name):
 def pad_x(x_data):
     x_len = []
     for i in range(len(x_data)):
-        x_len.append(x_data[i].shape[0])
+        x_len.append(len(x_data[i]))
     max_x_len = max(x_len)
-    x_data_ret = np.zeros((len(x_data), max_x_len, 52), dtype=np.int8)
+    x_data_ret = np.zeros((len(x_data), max_x_len, x_data[0].shape[-1]), dtype=np.int8)
 
     for i in range(len(x_data)):
-        zeros = np.zeros((max_x_len - x_data[i].shape[0], 52), dtype=np.int8)
+        zeros = np.zeros((max_x_len - x_data[i].shape[0], x_data[0].shape[-1]), dtype=np.int8)
         x_data_ret[i] = np.concatenate((zeros, x_data[i]), axis=0)
     return x_data_ret, x_len
 
@@ -118,7 +129,7 @@ def generate_train_test():
     return x_train, x_test, y_train, y_test
 
 
-local_place = "/home/sue/Projects/Tenpai_prediction/data/"
+local_place = "./data/"
 def save_train_data():
     x_data_1, y_data_1 = generate_train_data("kintaro")
     x_data_2, y_data_2 = generate_train_data("mjscore")
@@ -131,8 +142,8 @@ def save_train_data():
     x_data, x_len = pad_x(x_data)
     y_data, y_len = pad_x(y_data)
     with open("./data/sizes.npy", "wb") as f:
-        np.save(x_len)
-        np.save(y_len)
+        np.save(f, x_len)
+        np.save(f, y_len)
     print(x_data.shape)
     # np.save("../model/x_data.npy", x_data)
     # np.save("../model/y_data.npy", y_data)
