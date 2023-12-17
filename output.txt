@@ -1,0 +1,70 @@
+Epoch 1/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 165s 120ms/step - categorical_crossentropy: 6.1006 - loss: 6.1006 - mean_metric_wrapper: 0.2400 - val_categorical_crossentropy: 6.0430 - val_loss: 6.0430 - val_mean_metric_wrapper: 0.2456
+Epoch 2/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 165s 120ms/step - categorical_crossentropy: 6.0382 - loss: 6.0382 - mean_metric_wrapper: 0.2467 - val_categorical_crossentropy: 5.9737 - val_loss: 5.9738 - val_mean_metric_wrapper: 0.2526
+Epoch 3/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 165s 120ms/step - categorical_crossentropy: 5.9749 - loss: 5.9749 - mean_metric_wrapper: 0.2520 - val_categorical_crossentropy: 5.9343 - val_loss: 5.9344 - val_mean_metric_wrapper: 0.2560
+Epoch 4/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 164s 120ms/step - categorical_crossentropy: 5.9338 - loss: 5.9338 - mean_metric_wrapper: 0.2563 - val_categorical_crossentropy: 5.8791 - val_loss: 5.8791 - val_mean_metric_wrapper: 0.2620
+Epoch 5/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 164s 120ms/step - categorical_crossentropy: 5.8589 - loss: 5.8589 - mean_metric_wrapper: 0.2647 - val_categorical_crossentropy: 5.7442 - val_loss: 5.7442 - val_mean_metric_wrapper: 0.2777
+Epoch 6/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 166s 121ms/step - categorical_crossentropy: 5.6691 - loss: 5.6691 - mean_metric_wrapper: 0.2875 - val_categorical_crossentropy: 5.4225 - val_loss: 5.4225 - val_mean_metric_wrapper: 0.3152
+Epoch 7/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 166s 121ms/step - categorical_crossentropy: 5.2932 - loss: 5.2932 - mean_metric_wrapper: 0.3310 - val_categorical_crossentropy: 4.9712 - val_loss: 4.9712 - val_mean_metric_wrapper: 0.3652
+Epoch 8/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 164s 119ms/step - categorical_crossentropy: 4.8599 - loss: 4.8599 - mean_metric_wrapper: 0.3789 - val_categorical_crossentropy: 4.5867 - val_loss: 4.5868 - val_mean_metric_wrapper: 0.4097
+Epoch 9/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 164s 120ms/step - categorical_crossentropy: 4.5200 - loss: 4.5200 - mean_metric_wrapper: 0.4195 - val_categorical_crossentropy: 4.2492 - val_loss: 4.2492 - val_mean_metric_wrapper: 0.4525
+Epoch 10/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 165s 120ms/step - categorical_crossentropy: 4.2094 - loss: 4.2094 - mean_metric_wrapper: 0.4598 - val_categorical_crossentropy: 3.9151 - val_loss: 3.9151 - val_mean_metric_wrapper: 0.4961
+Epoch 11/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 165s 120ms/step - categorical_crossentropy: 3.9116 - loss: 3.9116 - mean_metric_wrapper: 0.4988 - val_categorical_crossentropy: 3.6343 - val_loss: 3.6344 - val_mean_metric_wrapper: 0.5345
+Epoch 12/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 165s 120ms/step - categorical_crossentropy: 3.6622 - loss: 3.6622 - mean_metric_wrapper: 0.5338 - val_categorical_crossentropy: 3.3923 - val_loss: 3.3924 - val_mean_metric_wrapper: 0.5685
+Epoch 13/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 164s 119ms/step - categorical_crossentropy: 3.4523 - loss: 3.4523 - mean_metric_wrapper: 0.5632 - val_categorical_crossentropy: 3.1819 - val_loss: 3.1819 - val_mean_metric_wrapper: 0.6002
+Epoch 14/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 164s 119ms/step - categorical_crossentropy: 3.2620 - loss: 3.2620 - mean_metric_wrapper: 0.5930 - val_categorical_crossentropy: 2.9779 - val_loss: 2.9779 - val_mean_metric_wrapper: 0.6331
+Epoch 15/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 163s 119ms/step - categorical_crossentropy: 3.0788 - loss: 3.0788 - mean_metric_wrapper: 0.6211 - val_categorical_crossentropy: 2.7942 - val_loss: 2.7942 - val_mean_metric_wrapper: 0.6622
+Epoch 16/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 165s 121ms/step - categorical_crossentropy: 2.9039 - loss: 2.9039 - mean_metric_wrapper: 0.6505 - val_categorical_crossentropy: 2.5925 - val_loss: 2.5925 - val_mean_metric_wrapper: 0.6971
+Epoch 17/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 164s 120ms/step - categorical_crossentropy: 2.7370 - loss: 2.7370 - mean_metric_wrapper: 0.6794 - val_categorical_crossentropy: 2.4323 - val_loss: 2.4324 - val_mean_metric_wrapper: 0.7257
+Epoch 18/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 163s 119ms/step - categorical_crossentropy: 2.5816 - loss: 2.5816 - mean_metric_wrapper: 0.7062 - val_categorical_crossentropy: 2.2790 - val_loss: 2.2791 - val_mean_metric_wrapper: 0.7520
+Epoch 19/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 165s 120ms/step - categorical_crossentropy: 2.4456 - loss: 2.4456 - mean_metric_wrapper: 0.7303 - val_categorical_crossentropy: 2.1554 - val_loss: 2.1555 - val_mean_metric_wrapper: 0.7742
+Epoch 20/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 164s 120ms/step - categorical_crossentropy: 2.3349 - loss: 2.3349 - mean_metric_wrapper: 0.7490 - val_categorical_crossentropy: 2.0527 - val_loss: 2.0528 - val_mean_metric_wrapper: 0.7917
+Epoch 21/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 164s 119ms/step - categorical_crossentropy: 2.2388 - loss: 2.2388 - mean_metric_wrapper: 0.7660 - val_categorical_crossentropy: 1.9814 - val_loss: 1.9814 - val_mean_metric_wrapper: 0.8045
+Epoch 22/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 165s 120ms/step - categorical_crossentropy: 2.1501 - loss: 2.1501 - mean_metric_wrapper: 0.7819 - val_categorical_crossentropy: 1.8964 - val_loss: 1.8965 - val_mean_metric_wrapper: 0.8197
+Epoch 23/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 163s 119ms/step - categorical_crossentropy: 2.0731 - loss: 2.0731 - mean_metric_wrapper: 0.7945 - val_categorical_crossentropy: 1.8285 - val_loss: 1.8285 - val_mean_metric_wrapper: 0.8314
+Epoch 24/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 165s 121ms/step - categorical_crossentropy: 2.0123 - loss: 2.0123 - mean_metric_wrapper: 0.8051 - val_categorical_crossentropy: 1.7720 - val_loss: 1.7720 - val_mean_metric_wrapper: 0.8414
+Epoch 25/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 165s 121ms/step - categorical_crossentropy: 1.9608 - loss: 1.9608 - mean_metric_wrapper: 0.8141 - val_categorical_crossentropy: 1.7252 - val_loss: 1.7252 - val_mean_metric_wrapper: 0.8496
+Epoch 26/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 165s 120ms/step - categorical_crossentropy: 1.9184 - loss: 1.9184 - mean_metric_wrapper: 0.8212 - val_categorical_crossentropy: 1.7073 - val_loss: 1.7073 - val_mean_metric_wrapper: 0.8531
+Epoch 27/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 165s 120ms/step - categorical_crossentropy: 1.8816 - loss: 1.8816 - mean_metric_wrapper: 0.8276 - val_categorical_crossentropy: 1.6688 - val_loss: 1.6688 - val_mean_metric_wrapper: 0.8604
+Epoch 28/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 165s 120ms/step - categorical_crossentropy: 1.8538 - loss: 1.8538 - mean_metric_wrapper: 0.8324 - val_categorical_crossentropy: 1.6539 - val_loss: 1.6540 - val_mean_metric_wrapper: 0.8631
+Epoch 29/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 165s 120ms/step - categorical_crossentropy: 1.8267 - loss: 1.8267 - mean_metric_wrapper: 0.8375 - val_categorical_crossentropy: 1.6253 - val_loss: 1.6253 - val_mean_metric_wrapper: 0.8682
+Epoch 30/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 165s 121ms/step - categorical_crossentropy: 1.7971 - loss: 1.7971 - mean_metric_wrapper: 0.8419 - val_categorical_crossentropy: 1.6168 - val_loss: 1.6168 - val_mean_metric_wrapper: 0.8697
+Epoch 31/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 166s 121ms/step - categorical_crossentropy: 1.7797 - loss: 1.7797 - mean_metric_wrapper: 0.8453 - val_categorical_crossentropy: 1.5997 - val_loss: 1.5997 - val_mean_metric_wrapper: 0.8727
+Epoch 32/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 164s 120ms/step - categorical_crossentropy: 1.7573 - loss: 1.7573 - mean_metric_wrapper: 0.8490 - val_categorical_crossentropy: 1.5854 - val_loss: 1.5854 - val_mean_metric_wrapper: 0.8749
+Epoch 33/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 164s 120ms/step - categorical_crossentropy: 1.7453 - loss: 1.7453 - mean_metric_wrapper: 0.8521 - val_categorical_crossentropy: 1.5920 - val_loss: 1.5920 - val_mean_metric_wrapper: 0.8751
+Epoch 34/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 165s 120ms/step - categorical_crossentropy: 1.7369 - loss: 1.7369 - mean_metric_wrapper: 0.8532 - val_categorical_crossentropy: 1.5453 - val_loss: 1.5453 - val_mean_metric_wrapper: 0.8830
+Epoch 35/70
+1367/1367 ━━━━━━━━━━━━━━━━━━━━ 165s 120ms/step - categorical_crossentropy: 1.7092 - loss: 1.7092 - mean_metric_wrapper: 0.8579 - val_categorical_crossentropy: 1.5565 - val_loss: 1.5565 - val_mean_metric_wrapper: 0.8824

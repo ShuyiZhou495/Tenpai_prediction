@@ -2,7 +2,7 @@ from mahjong.shanten import Shanten
 from mahjong.tile import TilesConverter
 
 
-def tenpai(tiles, sute):
+def tenpai(tiles, sute, kan):
     shanten = Shanten()
     if len(tiles) == 34:
         # [3,1,1,...,3,0,...,0]
@@ -15,9 +15,13 @@ def tenpai(tiles, sute):
     for i in range(34):
         if tiles_34[i] < 4 and not sute[i]:
             tiles_34[i] += 1
+            for index in kan:
+                tiles_34[index] -= 1
             if shanten.calculate_shanten(tiles_34) == -1:
                 result[i] = 1
             tiles_34[i] -= 1
+            for index in kan:
+                tiles_34[index] += 1
     return result
 
 

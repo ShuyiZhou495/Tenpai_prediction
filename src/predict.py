@@ -3,7 +3,7 @@ import numpy as np
 from generate_train_data import generate_test_data
 
 
-model = load_model("../model/tenpai.model")
+model = load_model("./model/tenpai.model")
 x_data, y_data, assistant_data = generate_test_data('test')
 
 pad_dim = int(model.input.shape[1])

@@ -52,6 +52,15 @@ def parse_haifu(haifu):
     first_richi_player = int(haifu[5][richi_position - 1])
     haifu[5] = haifu[5][0:richi_position + 6]
 
+    # search for kan
+    kan_index = -1
+    kan_list = {1:[], 2:[], 3:[], 4:[]}
+    while "K" in haifu[5][kan_index + 1:]:
+        kan_index += 1 + haifu[5][kan_index + 1:].index("K")
+        kan_player = haifu[5][kan_index-1]
+        kan_hai = haifu[5][kan_index + 1: kan_index + 3].replace(" ", "")
+        kan_list[int(kan_player)].append(change_tile_to_number(kan_hai))
+
     # chanfon = '東'
     chanfon = haifu[6].strip()[0]
 
@@ -91,7 +100,7 @@ def parse_haifu(haifu):
                     tile_number = change_tile_to_number(now_tile)
                     start_hand_richi[tile_number] -= 1
                     sute[tile_number] = True
-    tenpai_result = tenpai(start_hand_richi, sute)
+    tenpai_result = tenpai(start_hand_richi, sute, kan=kan_list[first_richi_player])
 
     return input_list, chanfon, jikaze, dora_list, tenpai_result, sute
 
