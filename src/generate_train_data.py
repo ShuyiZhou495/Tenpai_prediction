@@ -8,6 +8,7 @@ from haifu_parser import load_data
 from haifu_parser import richi_filter
 from haifu_parser import parse_haifu
 from haifu_parser import action_to_vector
+import torch
 
 
 def generate_train_data(file_name):
@@ -98,14 +99,15 @@ def pad_x(x_data):
 
     for i in range(len(x_data)):
         zeros = np.zeros((max_x_len - x_data[i].shape[0], x_data[0].shape[-1]), dtype=np.int8)
-        x_data_ret[i] = np.concatenate((zeros, x_data[i]), axis=0)
+        x_data_ret[i] = np.concatenate((x_data[i], zeros), axis=0)
     return x_data_ret, x_len
 
 
-def shuffle_split(x_data, y_data):
+def shuffle_split(x_data, y_data, x_len, y_len):
     # x_data, y_data = shuffle(x_data, y_data)
-    x_train, x_test, y_train, y_test = train_test_split(x_data, y_data,
+    x_train, x_test, y_train, y_test = train_test_split(x_data, x_len, y_data,
                                                         test_size=0.2)
+
     return x_train, x_test, y_train, y_test
 
 
@@ -125,8 +127,17 @@ def generate_train_test():
         np.save(x_len)
         np.save(y_len)
     print(x_data.shape)
-    x_train, x_test, y_train, y_test = shuffle_split(x_data, y_data)
-    return x_train, x_test, y_train, y_test
+    with open("./data/sizes.npy", "rb") as f:
+        x_len = np.load(f, allow_pickle=True)
+        y_len = np.load(f, allow_pickle=True)
+    x_train, x_test, x_len_train, x_len_test, y_train, y_test = train_test_split(x_data, x_len, y_data,
+                                                        test_size=0.2)
+    return torch.tensor(x_train, dtype=torch.float16), \
+            torch.tensor(x_test, dtype=torch.float16), \
+            torch.tensor(x_len_train, dtype=torch.long), \
+            torch.tensor(x_len_test, dtype=torch.long), \
+            torch.tensor(y_train, dtype=torch.float16), \
+            torch.tensor(y_test, dtype=torch.float16)
 
 
 local_place = "./data/"
@@ -155,8 +166,17 @@ def save_train_data():
 def generate_train_test_local():
     x_data = np.load(local_place + "x_data.npy").astype(np.int8)
     y_data = np.load(local_place + "y_data.npy").astype(np.int8)
-    x_train, x_test, y_train, y_test = shuffle_split(x_data, y_data)
-    return x_train, x_test, y_train, y_test
+    with open("./data/sizes.npy", "rb") as f:
+        x_len = np.load(f, allow_pickle=True)
+        y_len = np.load(f, allow_pickle=True)
+    x_train, x_test, x_len_train, x_len_test, y_train, y_test = train_test_split(x_data, x_len, y_data,
+                                                        test_size=0.2)
+    return torch.tensor(x_train, dtype=torch.float32), \
+            torch.tensor(x_test, dtype=torch.float32), \
+            torch.tensor(x_len_train, dtype=torch.long), \
+            torch.tensor(x_len_test, dtype=torch.long), \
+            torch.tensor(y_train, dtype=torch.float32), \
+            torch.tensor(y_test, dtype=torch.float32)
 
 
 if __name__ == "__main__":
