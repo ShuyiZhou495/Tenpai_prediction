@@ -1,12 +1,13 @@
 import os
 os.environ["KERAS_BACKEND"] = "torch"
 from generate_train_data import generate_train_test_local, generate_train_test
-import keras_core as keras
-from keras_core.callbacks import Callback
-from keras_core.layers import Input, LSTM, Dropout
-from keras_core.layers import Dense
-from keras_core.models import Model
-from keras_core.optimizers import Adam
+import keras
+from keras_nlp.layers import TransformerEncoder
+from keras.callbacks import Callback
+from keras.layers import Input, LSTM, Dropout
+from keras.layers import Dense
+from keras.models import Model
+from keras.optimizers import Adam
 from LossHistory import LossHistory
 import torch
 import tensorflow as tf
@@ -30,22 +31,32 @@ def acc(y_true, y_pred):
 if __name__ == "__main__":
     print(torch.cuda.is_available())
     # x_train, x_test, y_train, y_test = generate_train_test()
-    x_train, x_test, y_train, y_test = generate_train_test_local()
+    x_train, x_test, x_len, x_len_test, y_train, y_test = generate_train_test_local()
     print(x_train.shape)
     print(y_train.shape)
 
     # Model
     inp = Input(shape=(x_train[0].shape[0], 52))
-    x = LSTM(256, return_sequences=True)(inp)
+    x = Dense(256, activation="relu")(inp)
+    # x = keras_nlp.layers.SinePositionEncoding()(x) + x
+    x = TransformerEncoder(512, 4, dropout=0.1)(x)
     x = Dropout(0.1)(x)
-    """
-    x = CuDNNLSTM(256, return_sequences=True)(x)
-    x = Dropout(0.1)(x)
-    x = CuDNNLSTM(256, return_sequences=True)(x)
-    x = Dropout(0.1)(x)
-    """
+    # x = keras.layers.AveragePooling1D(109, data_format="channels_last")(x)
+    # x = keras.layers.Flatten(data_format="channels_last")(x)
     x = LSTM(256, return_sequences=False)(x)
     x = Dropout(0.1)(x)
+    """
+    x = CuDNNLSTM(256, return_sequences=True)(x)
+    x = Dropout(0.1)(x)
+    x = CuDNNLSTM(256, return_sequences=True)(x)
+    x = Dropout(0.1)(x)
+    """
+    
+
+    # x = LSTM(256, return_sequences=True)(inp)
+    # x = Dropout(0.1)(x)
+    # x = LSTM(256, return_sequences=False)(x)
+    # x = Dropout(0.1)(x)
     x = Dense(128, activation="relu")(x)
     x = Dropout(0.1)(x)
     x = Dense(64, activation="relu")(x)
@@ -64,10 +75,10 @@ if __name__ == "__main__":
     par_model.compile(#loss='cosine_proximity',
                       loss='categorical_crossentropy',
                       optimizer=opt,
-                      metrics=['categorical_crossentropy', acc])
+                      metrics=[keras.metrics.CategoricalAccuracy()])
     print(par_model.summary())
 
-    epoch_nb = 70
+    epoch_nb = 100
     batch = 512
 
     cbk = MyCbk(model)
