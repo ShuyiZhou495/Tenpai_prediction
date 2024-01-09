@@ -1,0 +1,158 @@
+Richi player tenpai: []
+{'safe': 0.9990305}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 20ms/step
+Richi player tenpai: ['5m', '8m', '6p', '9p']
+{'5m': 0.32749087, '8m': 0.3106762, '6p': 0.23354056}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 17ms/step
+Richi player tenpai: ['4p', '3s']
+{'3s': 0.54695445, '6s': 0.1294926}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 21ms/step
+Richi player tenpai: ['1s', '4s']
+{'safe': 0.9947191}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 17ms/step
+Richi player tenpai: ['5p', '7p', '8p']
+{'5p': 0.3017076, '7p': 0.3206197, '8p': 0.35270435}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 17ms/step
+Richi player tenpai: []
+{'safe': 0.9899929}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 17ms/step
+Richi player tenpai: ['5p', '8p']
+{'5p': 0.45965365, '8p': 0.5355988}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 22ms/step
+Richi player tenpai: []
+{'safe': 0.9994047}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 18ms/step
+Richi player tenpai: ['5s']
+{'safe': 0.9614322}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 22ms/step
+Richi player tenpai: ['6m']
+{'6m': 0.9705326}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 25ms/step
+Richi player tenpai: []
+{'safe': 0.999181}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 25ms/step
+Richi player tenpai: ['4s', '7s']
+{'4s': 0.18425766, '7s': 0.11027006, '発': 0.49201298}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 19ms/step
+Richi player tenpai: ['7m']
+{'3m': 0.13037597, '4m': 0.1440761, '6m': 0.10616523, '7m': 0.15248677, '4s': 0.11979501}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 23ms/step
+Richi player tenpai: ['1m', '4m']
+{'1m': 0.29150042, '4m': 0.45467708}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 28ms/step
+Richi player tenpai: ['2m', '6m', '8m', '8p', '3s']
+{'5m': 0.16367719, '8m': 0.13643281, '3s': 0.17626391, '東': 0.10631273}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 17ms/step
+Richi player tenpai: []
+{'safe': 0.99746245}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 32ms/step
+Richi player tenpai: []
+{'safe': 0.8861509}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 29ms/step
+Richi player tenpai: ['6m']
+{'safe': 0.9464186}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 27ms/step
+Richi player tenpai: []
+{'safe': 0.9823734}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 26ms/step
+Richi player tenpai: []
+{'safe': 0.99946344}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 25ms/step
+Richi player tenpai: []
+{'safe': 0.9760169}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 24ms/step
+Richi player tenpai: []
+{'3s': 0.22412327, '6s': 0.123701185, '東': 0.1802651, 'safe': 0.116580114}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 25ms/step
+Richi player tenpai: ['3m', '6m']
+{'7m': 0.39716315, '8m': 0.2108447}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 27ms/step
+Richi player tenpai: ['5m', '5s']
+{'5m': 0.19875418, '5s': 0.44917655, '6s': 0.12007711}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 27ms/step
+Richi player tenpai: ['3m', '6m']
+{'3m': 0.4019523, '6m': 0.49357203}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 27ms/step
+Richi player tenpai: ['4p', '7p', '白']
+{'7m': 0.1114116, '4s': 0.3143935, '7s': 0.12465723}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 27ms/step
+Richi player tenpai: ['3m', '8s']
+{'3m': 0.19123654, '6m': 0.13539073, '5s': 0.15846777, '8s': 0.38413027}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 25ms/step
+Richi player tenpai: ['4s']
+{'safe': 0.99958163}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 28ms/step
+Richi player tenpai: ['6m', '9m']
+{'6m': 0.31362492, '9m': 0.26623994, '5p': 0.23530945}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 29ms/step
+Richi player tenpai: ['6m']
+{'safe': 0.96951103}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 23ms/step
+Richi player tenpai: []
+{'safe': 0.9756052}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 25ms/step
+Richi player tenpai: ['1m', '4m', '7m', '5p', '8p']
+{'5p': 0.13607241, '8p': 0.315571}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 25ms/step
+Richi player tenpai: ['6p', '8p']
+{'5p': 0.15114519, '6p': 0.14997211, '8p': 0.53849864}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 31ms/step
+Richi player tenpai: ['1p', '8s', '南', '白']
+{'1p': 0.35941863, '8s': 0.20824626, '南': 0.29905102, '白': 0.11643485}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 19ms/step
+Richi player tenpai: []
+{'safe': 0.99979216}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 18ms/step
+Richi player tenpai: []
+{'safe': 0.9995541}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 24ms/step
+Richi player tenpai: ['4m', '7m', '1p', '6p', '東']
+{'1p': 0.1512, '6p': 0.1316393, '東': 0.1912468}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 20ms/step
+Richi player tenpai: []
+{'safe': 0.92201334}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 27ms/step
+Richi player tenpai: []
+{'safe': 0.96784925}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 19ms/step
+Richi player tenpai: []
+{'safe': 0.8148176}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 19ms/step
+Richi player tenpai: ['5p', '7p']
+{'2m': 0.3197691, '7p': 0.27834862, '2s': 0.1767909}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 18ms/step
+Richi player tenpai: ['3p', '7p', '東']
+{'3m': 0.12654363, '6m': 0.1278326, 'safe': 0.49274117}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 20ms/step
+Richi player tenpai: ['7m']
+{'7m': 0.9058319}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 28ms/step
+Richi player tenpai: []
+{'6m': 0.34542117, '9m': 0.4570572}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 31ms/step
+Richi player tenpai: []
+{'safe': 0.99976903}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 30ms/step
+Richi player tenpai: []
+{'safe': 0.94315386}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 29ms/step
+Richi player tenpai: ['2p', '4p', '5p', '4s']
+{'2p': 0.19746828, '4s': 0.15393719}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 17ms/step
+Richi player tenpai: []
+{'safe': 0.99947447}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 19ms/step
+Richi player tenpai: ['1p', '4p', '7p']
+{'safe': 0.9881606}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 22ms/step
+Richi player tenpai: ['2p', '6s']
+{'1m': 0.11809668, '4m': 0.30047575, '7m': 0.23755953}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 17ms/step
+Richi player tenpai: ['6p', '9p']
+{'safe': 0.7229625}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 18ms/step
+Richi player tenpai: []
+{'safe': 0.99217665}
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 17ms/step
+Richi player tenpai: []
+{'safe': 0.73368526}

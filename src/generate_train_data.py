@@ -11,15 +11,15 @@ from haifu_parser import action_to_vector
 import torch
 
 
-def generate_train_data(file_name):
+def generate_train_data(file_name, mjs=False):
     # 600 haifus/1s
     print("Haifu name:" + file_name)
 
-    # if os.path.exists("./data/" + file_name + ".npy"):
-    #     with open("./data/" + file_name + ".npy", "rb") as f:
-    #         x_data_numpy = np.load(f, allow_pickle=True)
-    #         y_data_numpy = np.load(f, allow_pickle=True)
-    #     return x_data_numpy, y_data_numpy
+    if os.path.exists("./data/" + file_name + ".npy"):
+        with open("./data/" + file_name + ".npy", "rb") as f:
+            x_data_numpy = np.load(f, allow_pickle=True)
+            y_data_numpy = np.load(f, allow_pickle=True)
+        return x_data_numpy, y_data_numpy
     time_start = time.time()
     x_data = []
     y_data = []
@@ -35,7 +35,8 @@ def generate_train_data(file_name):
             if len(out) > 0:
                 x_data.append(inp)
                 y_data.append(out)
-                break
+                if mjs:
+                    break
             else:
                 continue
     x_data_numpy = np.array(x_data, dtype=object)
@@ -253,8 +254,8 @@ def save_train_data():
     print("Train data generate and save on local place")
 
 def save_train_data_mjsoul():
-    x_data_1, y_data_1 = generate_train_data("sue")
-    x_data_2, y_data_2 = generate_train_data("xsx")
+    x_data_1, y_data_1 = generate_train_data("sue", True)
+    x_data_2, y_data_2 = generate_train_data("xsx", True)
     
     x_data = np.concatenate((x_data_1, x_data_2), axis=0)
     y_data = np.concatenate((y_data_1, y_data_2), axis=0)
